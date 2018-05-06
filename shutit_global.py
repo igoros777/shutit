@@ -56,15 +56,18 @@ class ShutItGlobal(object):
 		self.only_one         = True
 		self.ispy3            = (sys.version_info[0] >= 3)
 
-		self.secret_words_set = set()
-		self.logfile          = None
-		self.loglevel         = None
-		self.signal_id        = None
-		self.window_size_max  = 65535
-		self.username         = os.environ.get('LOGNAME', '')
-		self.default_timeout  = 3600
-		self.delaybeforesend  = 0
-		self.default_encoding = 'utf-8'
+		# If in term_takeover_mode, then we control the output in
+		# shutit_term_takeover.py
+		self.term_takeover_mode = False
+		self.secret_words_set   = set()
+		self.logfile            = None
+		self.loglevel           = None
+		self.signal_id          = None
+		self.window_size_max    = 65535
+		self.username           = os.environ.get('LOGNAME', '')
+		self.default_timeout    = 3600
+		self.delaybeforesend    = 0
+		self.default_encoding   = 'utf-8'
 		# Quotes here are intentional. Some versions of sleep don't support fractional seconds.
 		# True is called to take up the time require
 		self.prompt_command          = "'sleep .05||sleep 1'"
